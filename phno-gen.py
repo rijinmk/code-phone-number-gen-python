@@ -1,3 +1,5 @@
+#https://github.com/rijinmk/code-phone-number-gen-python
+
 import argparse
 import time
 import tqdm
@@ -26,7 +28,7 @@ if(args.prefix):
     prefix = (args.prefix).split(',')
 
 if(args.start):
-    end = int(args.start)    
+    start = int(args.start)    
 
 if(args.end):
     end = int(args.end)
@@ -34,6 +36,7 @@ if(args.end):
 f = open(file_name, 'w')
 
 for p in prefix:
+    print start
     if(args.prefix):
         print 'Current prefix: ', (p + ('X' * digits))
     for i in tqdm.tqdm(range(start, end, 1)): 
@@ -41,7 +44,7 @@ for p in prefix:
         number += '0' * (digits-len(str(i)))
         number += str(i)
         f.write(number + '\n')
-        
+
 f.close()
 print 'File ', file_name, ' created. This file contains all your numbers'
         
